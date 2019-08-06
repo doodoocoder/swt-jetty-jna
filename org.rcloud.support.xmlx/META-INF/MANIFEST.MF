@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xmlx
+Bundle-SymbolicName: org.rcloud.support.xmlx
+Bundle-Version: 1.0.0
+Automatic-Module-Name: org.rcloud.support.xmlx
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.dom4j,
+ org.dom4j.io

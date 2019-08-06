@@ -1,0 +1,45 @@
+package org.rcloud.medical.clientx;
+
+import org.eclipse.equinox.app.IApplication;
+import org.eclipse.equinox.app.IApplicationContext;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
+
+/**
+ * This class controls all aspects of the application's execution
+ * 启动顺序：actvator---application---front view--windowadvisor(post最后)
+ */
+public class Application implements IApplication {
+
+	@Override
+	public Object start(IApplicationContext context) throws Exception {
+		Display display = PlatformUI.createDisplay();
+		new WebserverThread().start();
+		LogUtil.log("医保组件组网成功");
+
+		RcloudActiveX.initActiveX();// init com
+		try {
+			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
+			if (returnCode == PlatformUI.RETURN_RESTART)
+				return IApplication.EXIT_RESTART;
+			else
+				return IApplication.EXIT_OK;
+		} finally {
+			display.dispose();
+		}
+
+	}
+
+	@Override
+	public void stop() {
+		if (!PlatformUI.isWorkbenchRunning())
+			return;
+		final IWorkbench workbench = PlatformUI.getWorkbench();
+		final Display display = workbench.getDisplay();
+		display.syncExec(() -> {
+			if (!display.isDisposed())
+				workbench.close();
+		});
+	}
+}

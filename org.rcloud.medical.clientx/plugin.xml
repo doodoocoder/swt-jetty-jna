@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.rcloud.medical.clientx.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.rcloud.medical.clientx.Perspective"
+            name="RCP Perspective"
+            id="org.rcloud.medical.clientx.perspective">
+      </perspective>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="襄阳村医2.0"
+            application="org.rcloud.medical.clientx.application">
+         <property
+               name="windowImages"
+               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png,icons/eclipse128.png,icons/eclipse256.png">
+         </property>
+         <property
+               name="appName"
+               value="襄阳村医2.0">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.rcloud.medical.clientx.FrontView"
+            id="org.rcloud.medical.clientx.front"
+            name="rcloud-front"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

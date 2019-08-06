@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Logback
+Bundle-SymbolicName: org.rcloud.support.logback
+Bundle-Version: 1.0.0
+Automatic-Module-Name: org.rcloud.support.logback
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ch.qos.logback.classic,
+ ch.qos.logback.classic.joran,
+ ch.qos.logback.core.joran,
+ ch.qos.logback.core.joran.spi,
+ ch.qos.logback.core.spi,
+ ch.qos.logback.core,
+ org.slf4j
